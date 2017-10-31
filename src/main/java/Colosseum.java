@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 /**
  * Class that implements a Pokemon colosseum.
  * <p>
@@ -102,9 +103,64 @@ public class Colosseum {
      *         (Look, we can return objects too!)
      *         <p>
      */
+
+
     public static Pokemon buildPokemon() {
-        Pokemon returnPokemon = null;
-        return returnPokemon;
+        Pokemon tempPokemon = new Pokemon();
+        int x = 0;
+        System.out.println("Please choose a type: ");
+        System.out.println("1. Electric");
+        System.out.println("2. Fire");
+        System.out.println("3. Water");
+        x = myScan.nextInt();
+        if (x == 1) {
+             tempPokemon = new ElectricPokemon();
+
+        } else if (x == 2) {
+            tempPokemon = new FirePokemon();
+
+        } else if (x == 3) {
+            tempPokemon = new WaterPokemon();
+
+        }
+        System.out.println("Please name your Pokemon");
+        tempPokemon.setName( myScan.next());
+        while(true) {
+            System.out.println("How many hitpoints will it have? (1-50)");
+            x = myScan.nextInt();
+            if (x < 0 || x > 50) {
+                System.out.println("Sorry. Hit points must be between 1 & 50");
+                continue;
+            } else {
+                tempPokemon.setHitPoints(x);
+                break;
+            }
+        }
+        System.out.println(" Split " + tempPokemon.getHitPoints() + " points between attack level and defense level");
+        while(true) {
+            System.out.println("Enter your attack level (1-" + (tempPokemon.getHitPoints() - 1) + ")");
+            x = myScan.nextInt();
+            if (x < 1 || x > 49) {
+                System.out.println("Sorry. Attack level must be between 1 & " + (tempPokemon.getHitPoints() - 1));
+                continue;
+            } else {
+                tempPokemon.setAttackLevel(x);
+                break;
+            }
+        }
+        while(true) {
+            System.out.println("Enter your defense level (1-" + (tempPokemon.getHitPoints() - tempPokemon.getAttackLevel()) + ")");
+            x = myScan.nextInt();
+            if (x < 1 || x > (50 - tempPokemon.getAttackLevel())) {
+                System.out.println("Sorry. Defense level must be between 1 &" + (tempPokemon.getHitPoints() - tempPokemon.getAttackLevel()) + "");
+                continue;
+            } else {
+                tempPokemon.setDefenseLevel(x);
+                break;
+            }
+        }
+
+        return tempPokemon;
     }
 
     /**
