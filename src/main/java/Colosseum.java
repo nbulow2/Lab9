@@ -6,7 +6,7 @@ import java.util.Scanner;
  * <p>
  * Our Pokemon console game was a big hit and #1 top app on a fictional website! In order to meet
  * the demands, we have to make our console game even better. We're launching Pokemon 2.0
- * and introducing new features, such as different types of Pokemon with special abilities.
+ * and introducing new features, suchterte as different types of Pokemon with special abilities.
  * The Colosseum class is where all the battles will go down.
  * We will build our Pokemon, let them battle, and see who will be the winner!
  *
